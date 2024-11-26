@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <title>Blocktime Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Leven - Resume / CV / vCard Template" />
+    <meta name="keywords" content="vcard, resposnive, retina, resume, jquery, css3, bootstrap, portfolio" />
+    <meta name="author" content="John" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+
+    <script src="js/modernizr.custom.js"></script>
+  </head>
+
+  <body class="page">
+
+    <div class="lm-animated-bg"></div>
+    
+    <!-- Loading animation -->
+    <div class="preloader">
+      <div class="preloader-animation">
+        <div class="preloader-spinner">
+        </div>
+      </div>
+    </div>
+    <!-- /Loading animation -->
+
+    <!-- Scroll To Top Button -->
+    <div class="lmpixels-scroll-to-top"><i class="lnr lnr-chevron-up"></i></div>
+    <!-- /Scroll To Top Button -->
+
+    <div class="page-scroll">
+      <div id="page_container" class="page-container bg-move-effect" data-animation="transition-flip-in-right">
+
+        <!-- Header -->
+        <header id="site_header" class="header">
+          <div class="header-content clearfix">
+                
+            <!-- Text Logo -->
+            <div class="text-logo">
+              <a href="index.html">
+                <div class="logo-symbol">B</div>
+                <div class="logo-text">Blocktime <span>Project</span></div>
+              </a>
+            </div>
+            <!-- /Text Logo -->
+
+            <!-- Navigation -->
+            <div class="site-nav mobile-menu-hide">
+              <ul class="leven-classic-menu site-main-menu">
+                <li class="menu-item menu-item-has-children current-menu-item">
+                  <a href="index.html">About Project</a>
+                  <ul class="sub-menu">
+                    <li class="menu-item current-menu-item">
+                      <a href="index.html">About Project</a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="index-2.html">About Project</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="menu-item">
+                  <a href="resume.html">Resume</a>
+                </li>
+
+                <li class="menu-item menu-item-has-children">
+                  <a href="portfolio.html">Portfolio</a>
+                  <ul class="sub-menu">
+                    <li class="menu-item">
+                      <a href="portfolio-2-columns.html">Portfolio 2 Columns</a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="portfolio.html">Portfolio 3 Columns</a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="portfolio-4-columns.html">Portfolio 4 Columns</a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="portfolio-5-columns.html">Portfolio 5 Columns</a>
+                    </li>
+                  </ul>
+                </li>
+                
+                <li class="menu-item menu-item-has-children">
+                  <a href="blog.html">Blog</a>
+                  <ul class="sub-menu">
+                    <li class="menu-item">
+                      <a href="blog.html">Blog 2 Columns</a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="blog-3-columns.html">Blog 3 Columns</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="menu-item">
+                  <a href="contact.html">Contact</a>
+                </li>
+              </ul>
+            </div>
+
+            <a class="menu-toggle mobile-visible">
+              <i class="fa fa-bars"></i>
+            </a>
+          </div>
+        </header>
+
+        <div id="main" class="site-main">
+          <div id="main-content" class="single-page-content">
+            <div id="primary" class="content-area">    
+              <div id="content" class="page-content site-content single-post" role="main">
+                <div class="row">
+                  <div class=" col-xs-12 col-sm-12">
+                    <div class="home-content">
+                      <div class="row flex-v-align">
+                        
+                        <div class="col-sm-12 col-md-5 col-lg-5">
+                          <div class="home-photo">
+                            <div class="hp-inner" style="background-image: url(data:image/jpeg;base64,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);">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-7 col-lg-7">
+                          <div class="home-text hp-left">
+                            <div class="owl-carousel text-rotation">                                    
+                              <div class="item">
+                                <h4>AWS - Grafana</h4>
+                              </div>
+
+                              <div class="item">
+                                <h4>Python - Mysql</h4>
+                              </div>
+                            </div>
+                              
+                            <h1>Project</h1>
+                            <p>Este projeto visa criar um dashboard para monitoramento em tempo real doㅤㅤconsumo de serviços na AWS. A solução exibe dados de faturamento atual,ㅤㅤㅤ ㅤconsumo diário, número de requisições, faturas pendentes e alertas de orçamento. O sistema também monitora instâncias EC2, RDS e suas versões, além de reservas de instâncias e planos de economia. A plataforma ajuda as equipes a controlar gastos, otimizar recursos e sugerir melhorias contínuas com base no consumo.</p>
+                                 
+                            <div class="home-buttons">
+                              <a href="Grafana.json" target="_blank" class="btn btn-primary" download="grafana.json">Download JSON Grafana</a>
+                              <a href="contact.html" target="_self" class="btn btn-secondary">Contact</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Home Page Top Part -->
+
+                <!-- Services -->
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                    <div class="p-50"></div>
+
+                    <div class="block-title">
+                      <h2>Project Tools</h2>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="info-list-w-icon">
+                      <div class="info-block-w-icon">
+                        <div class="ci-icon">
+                          <i class="lni lni-aws"></i>
+                        </div>
+      
+                        <div class="ci-text">
+                          <h4>AWS</h4>
+                          <p>A AWS é uma plataforma de computação em nuvem fornecida pela Amazon, que oferece uma ampla gama de serviços, incluindo computação, armazenamento, bancos de dados, análise de dados, inteligência artificial, segurança e muito mais. Ela permite que empresas escalem e gerenciem seus recursos de TI sem a necessidade de infraestrutura física, proporcionando flexibilidade, escalabilidade e redução de custos.</p>
+                        </div>
+                      </div>
+    
+                      <div class="info-block-w-icon">
+                        <div class="ci-icon">
+                          <i class="lni lni-bar-chart-4"></i>
+                        </div>
+     
+                        <div class="ci-text">
+                          <h4>Grafana</h4>
+                          <p>Grafana é uma plataforma de visualização e análise de dados em tempo real, amplamente utilizada para monitoramento e criação de dashboards interativos. Ela suporta diversas fontes de dados, como Prometheus, MySQL, PostgreSQL, e AWS CloudWatch, permitindo que os usuários visualizem métricas e logs de forma clara e interativa, essencial para monitoramento de sistemas e aplicativos.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="info-list-w-icon">
+
+                      <div class="info-block-w-icon">
+                        <div class="ci-icon">
+                          <i class="lni lni-python"></i>
+                        </div>
+
+                        <div class="ci-text">
+                          <h4>Python</h4>
+                          <p>Python é uma linguagem de programação de alto nível, conhecida por sua simplicidade e legibilidade. É amplamente utilizada para desenvolvimento web, automação, análise de dados, aprendizado de máquina, entre outras áreas. A linguagem é compatível com diversas bibliotecas, como Pandas, NumPy e Flask, que a tornam poderosa para trabalhar com grandes volumes de dados e para desenvolvimento rápido de aplicações.</p>
+                        </div>
+                      </div>
+
+                      <div class="info-block-w-icon">
+                        <div class="ci-icon">
+                          <i class="lni lni-mysql"></i>
+                        </div>
+
+                        <div class="ci-text">
+                          <h4>MySql</h4>
+                          <p>MySQL é um sistema de gerenciamento de banco de dados relacional (RDBMS) de código aberto, amplamente utilizado para armazenar e manipular dados. Ele usa a linguagem SQL (Structured Query Language) para gerenciar dados em tabelas e permite a criação de aplicativos web dinâmicos. MySQL é eficiente, escalável e pode ser integrado a diversas tecnologias, tornando-se uma escolha popular para aplicações de médio a grande porte.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /Services -->
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                    <div class="p-20"></div>
+
+                    <!-- Testimonials -->
+                    <div class="block-title">
+                      <h2>Members</h2>
+                    </div>
+
+                    <div id="testimonials_1" class="testimonials owl-carousel" data-mobile-items="1" data-tablet-items="2" data-items="2">
+                      <!-- Testimonial 1 -->
+                      <div class="testimonial-item">
+                        <!-- Testimonial Content -->
+                        <div class="testimonial-content">
+                          <!-- Picture -->
+                          <div class="testimonial-picture">
+                            <a href="https://www.linkedin.com/in/marcelo-mesquita-941843267/" target="_blank">
+                              <img src="https://avatars.githubusercontent.com/u/134961569?v=4" alt="Billy Adams"/>
+                            </a>
+                          </div>              
+                          <!-- /Picture -->
+
+                          <!-- Testimonial Text -->
+                          <div class="testimonial-text">
+                             <p>Responsável por definir, priorizar e gerenciar o Product Backlog, garantindo que a equipe de desenvolvimento esteja alinhada com os requisitos do produto e as necessidades dos stakeholders.</p>
+                          </div>
+                          <!-- /Testimonial Text -->
+
+                          <!-- Testimonial author information -->
+                          <div class="testimonial-author-info">
+                            <h5 class="testimonial-author">Marcelo Mesquita</h5>
+                            <p class="testimonial-firm">Scrum Master</p>
+                          </div>
+                          <!-- /Testimonial author information -->
+
+                          <div class="testimonial-icon">
+                            <i class="fa fa-quote-left"></i>
+                          </div>
+
+                           <div class="testimonial-icon-big">
+                            <i class="fa fa-quote-right"></i>
+                          </div>
+                        </div>
+                        <!-- /Testimonial Content -->
+                      </div>
+                      <!-- End of Testimonial 1 -->
+
+                      <!-- Testimonial 2 -->
+                      <div class="testimonial-item">
+                        <!-- Testimonial Content -->
+                        <div class="testimonial-content">
+                          <!-- Picture -->
+                          <div class="testimonial-picture">
+                            <a href="https://www.linkedin.com/in/kaua7k/" target="_blank">
+                              <img src="https://media.licdn.com/dms/image/v2/D4D03AQFweiPlGlPx4A/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1696534585139?e=1738195200&v=beta&t=YCC4Xn5XRh_C4ff2_2H2Sk0QOP5FkeQRoMeSiJoEWp4" alt="Gary Johnson"/>
+                            </a>
+                          </div>              
+                          <!-- /Picture -->
+
+                          <!-- Testimonial Text -->
+                          <div class="testimonial-text">
+                             <p>Profissionais multidisciplinares responsáveis pela execução das tarefas do Sprint Backlog e pela entrega de incrementos de produto ao longo do Sprint.</p>
+                          </div>
+                          <!-- /Testimonial Text -->
+
+                          <!-- Testimonial author information -->
+                          <div class="testimonial-author-info">
+                            <h5 class="testimonial-author">Kauã Cavalcante</h5>
+                            <p class="testimonial-firm">Development Team</p>
+                          </div>
+                          <!-- /Testimonial author information -->
+
+                          <div class="testimonial-icon">
+                            <i class="fa fa-quote-left"></i>
+                          </div>
+
+                           <div class="testimonial-icon-big">
+                            <i class="fa fa-quote-right"></i>
+                          </div>
+                        </div>
+                        <!-- /Testimonial Content -->
+                      </div>
+                      <!-- End of Testimonial 2 -->
+
+                      <!-- End of Testimonial 3 -->
+                      <div class="testimonial-item">
+
+                        <!-- Testimonial Content -->
+                        <div class="testimonial-content">
+                          <!-- Picture -->
+                          <div class="testimonial-picture">
+                            <a href="https://www.linkedin.com/in/rafael-benjamin-001243268/" target="_blank">
+                              <img src="https://media.licdn.com/dms/image/v2/D4D03AQGpehcJ3LQ58g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1699379584129?e=1738195200&v=beta&t=NKN2ZacyogHODcXklxQJsg5P6DXfJ17HHh4Sfeqc57g" alt="Daniel Pringle"/>
+                            </a>
+                          </div>              
+                          <!-- /Picture -->
+
+                          <!-- Testimonial Text -->
+                          <div class="testimonial-text">
+                            <p>Profissionais multidisciplinares responsáveis pela execução das tarefas do Sprint Backlog e pela entrega de incrementos de produto ao longo do Sprint.</p>
+                          </div>
+                          <!-- /Testimonial Text -->
+
+                          <!-- Testimonial author information -->
+                          <div class="testimonial-author-info">
+                            <h5 class="testimonial-author">Rafael Benjamin</h5>
+                            <p class="testimonial-firm">Development Team</p>
+                          </div>
+                          <!-- /Testimonial author information -->
+
+                          <div class="testimonial-icon">
+                            <i class="fa fa-quote-left"></i>
+                          </div>
+
+                          <div class="testimonial-icon-big">
+                            <i class="fa fa-quote-right"></i>
+                          </div>
+                        </div>
+                        <!-- /Testimonial Content -->
+
+                      </div>
+                      <!-- End of Testimonial 3 -->
+
+                       <!-- End of Testimonial 4 -->
+
+                      <!-- End of Testimonial 3 -->
+                      <div class="testimonial-item">
+
+                        <!-- Testimonial Content -->
+                        <div class="testimonial-content">
+                          <!-- Picture -->
+                          <div class="testimonial-picture">
+                            <a href="https://www.linkedin.com/in/bruno-reis-b10240268/" target="_blank">
+                              <img src="https://media.licdn.com/dms/image/v2/D4D03AQEILrVcL635hg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1699379397578?e=1738195200&v=beta&t=6cLrcfSGbntCoSmJ0BpURD82ttnokibvc15wP7XtSU0" alt="Daniel Pringle"/>
+                            </a>
+                          </div>              
+                          <!-- /Picture -->
+
+                          <!-- Testimonial Text -->
+                          <div class="testimonial-text">
+                            <p>Profissionais multidisciplinares responsáveis pela execução das tarefas do Sprint Backlog e pela entrega de incrementos de produto ao longo do Sprint.</p>
+                          </div>
+                          <!-- /Testimonial Text -->
+
+                          <!-- Testimonial author information -->
+                          <div class="testimonial-author-info">
+                            <h5 class="testimonial-author">Bruno Barbosa</h5>
+                            <p class="testimonial-firm">Development Team</p>
+                          </div>
+                          <!-- /Testimonial author information -->
+
+                          <div class="testimonial-icon">
+                            <i class="fa fa-quote-left"></i>
+                          </div>
+
+                          <div class="testimonial-icon-big">
+                            <i class="fa fa-quote-right"></i>
+                          </div>
+                        </div>
+                        <!-- /Testimonial Content -->
+
+                      </div>
+                      <!-- End of Testimonial 4 -->
+                    </div>
+                    <!-- /Testimonials -->
+                    </div>
+                    <!-- /Testimonials -->
+
+                    
+
+                    <div class="p-40"></div>
+
+                    <!-- Clients Slider -->
+                    <div class="block-title">
+                      <h2>Tools</h2>
+                    </div>
+
+                    <div id="clients_1" class="clients owl-carousel" data-mobile-items="1" data-tablet-items="3" data-items="6">
+                      <div class="client-block">
+                        <a  target="_blank" title="Golden Grid">
+                          <a>CloudTrail</a>
+                          <img src="https://icon.icepanel.io/AWS/svg/Management-Governance/CloudTrail.svg" alt="CloudTrail">
+                        </a>
+                      </div>
+
+                      <div class="client-block">
+                        <a  target="_blank" title="Sweety">
+                          <a>CloudWatch</a>
+                          <img src="https://icon.icepanel.io/AWS/svg/Management-Governance/CloudWatch.svg" alt="CloudWatch">
+                        </a>
+                      </div>
+
+                      <div class="client-block">
+                        <a  target="_blank" title="Magic Furnitures">
+                          <a>Cost-and-Usage-Report</a>
+                          <img src="https://icon.icepanel.io/AWS/svg/Cloud-Financial-Management/Cost-and-Usage-Report.svg" alt="Cost-and-Usage-Report">
+                        </a>
+                      </div>
+
+                      <div class="client-block">
+                        <a  target="_blank" title="LifeGuard">
+                          <a>Cost-Explorer</a>
+                          <img src="https://icon.icepanel.io/AWS/svg/Cloud-Financial-Management/Cost-Explorer.svg" alt="Cost-Explorer">
+                        </a>
+                      </div>
+
+                      <div class="client-block">
+                        <a  target="_blank" title="LESS">
+                          <a>Simple-Storage-Service</a>
+                          <img src="https://icon.icepanel.io/AWS/svg/App-Integration/Simple-Notification-Service.svg" alt="Simple-Storage-Service">
+                        </a>
+                      </div>
+
+                      <div class="client-block">
+                        <a  target="_blank" title="Design Lovers">
+                          <a>S3</a>
+                          <img src="https://icon.icepanel.io/AWS/svg/Storage/Simple-Storage-Service.svg" alt="Simple-Notification-Service">
+                        </a>
+                      </div>
+                    </div>
+                    <!-- /Clients Slider -->
+
+                    <div class="p-40"></div>
+
+                  </div>
+                </div>
+
+                <!-- Fun Facts -->
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12">
+                    <div class="block-title">
+                      <h2>Road Map</h2>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-3">
+                    <div class="lm-info-block gray-default">
+                      <i class="lni lni-play"></i>
+                      <h4>Start Project</h4>
+                      <span class="lm-info-block-value">30/10</span>
+                      <span class="lm-info-block-text"></span>
+                    </div>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-3">
+                    <div class="lm-info-block gray-default">
+                      <i class="lni lni-gears-3"></i>
+                      <h4>Development</h4>
+                      <span class="lm-info-block-value">&lt;/&gt;</span>
+                      <span class="lm-info-block-text"></span>
+                    </div>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-3 ">
+                    <div class="lm-info-block gray-default">
+                      <i class="lni lni-check"></i>
+                      <h4>Validation</h4>
+                      <span class="lm-info-block-value"> ✓ </span>
+                      <span class="lm-info-block-text"></span>
+                    </div>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-3 ">
+                    <div class="lm-info-block gray-default">
+                      <i class="linecons linecons-star"></i>
+                      <h4>End Project</h4>
+                      <span class="lm-info-block-value">13/11</span>
+                      <span class="lm-info-block-text"></span>
+                    </div>
+                  </div>
+                </div>
+                <!-- /Fun Facts -->
+
+                <div class="p-40"></div>
+
+                <!-- Pricing -->
+                <div class="row">
+                  <div class=" col-xs-12 col-sm-12 ">
+                    <div class="block-title">
+                      <h2>Pricing</h2>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <div class=" col-xs-12 col-sm-12 ">
+                    <div class="fw-pricing clearfix row">
+                      
+                      <div class="fw-package-wrap col-md-4 ">
+                        
+                      </div>
+   
+                      <div class="fw-package-wrap col-md-4 highlight-col ">
+                        <div class="fw-package">
+                          <div class="fw-heading-row">
+                            <span>Value</span>
+                          </div>
+                          
+                          <div class="fw-pricing-row">
+                            <span>$409.43</span>
+                            <small>per month</small>
+                          </div>
+
+                          <div class="fw-button-row">
+                            <a target="_self" class="btn btn-primary">AWS</a>
+                          </div>
+                          
+                          <div class="fw-default-row">CUR</div>
+                          <div class="fw-default-row">Cloud Watch</div>
+                          <div class="fw-default-row">CloudTrail</div>
+                          <div class="fw-default-row">EC2</div>
+                          <div class="fw-default-row">RDS</div>
+                          <div class="fw-default-row">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /Pricing -->
+              </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="site-footer clearfix">
+
+          <div class="footer-copyrights">
+            <p>© 2024 All rights reserved. Blocktime Project.</p>
+          </div>
+        </footer>
+        <!-- /Footer -->
+        
+      </div>
+    </div>
+
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src='../../../../www.google.com/recaptcha/api.js'></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src='js/jquery.shuffle.min.js'></script>
+    <script src='js/masonry.pkgd.min.js'></script>
+    <script src='js/owl.carousel.min.js'></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrDf32aQTCVENBhFJbMBKOUTiUAABtC2o"></script>
+    <script src="js/jquery.googlemap.js"></script>
+    <script src="js/validator.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

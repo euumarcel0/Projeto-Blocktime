@@ -1,0 +1,4425 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Projeto de Monitoramento",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "computest-cloudwatchalarm-datasource",
+        "uid": "QHBNRnGNk"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 36,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n    <a>\n        <img src=\"https://blog.flamingtext.com/blog/2024/11/10/flamingtext_com_1731209595_534616958.png\" width=\"1000\" height=\"300\">\n    </a>\n</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.3.0",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "collapsed": false,
+      "datasource": {
+        "uid": "$datasource"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 14,
+      "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "EC2",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "1fm_mPGNk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "links": [],
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "dark-red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 10
+      },
+      "id": 2,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {
+            "InstanceId": "i-0dce0d5b6e1038967"
+          },
+          "expression": "",
+          "id": "",
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "CPUUtilization",
+          "metricQueryType": 0,
+          "namespace": "AWS/EC2",
+          "period": "$period",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Maximum"
+        }
+      ],
+      "title": "CPU %",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "1fm_mPGNk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "dark-red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 10
+      },
+      "id": 170,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {
+            "InstanceId": "i-0dce0d5b6e1038967"
+          },
+          "expression": "SEARCH('Namespace=\"CWAgent\" InstanceId=\"i-0dce0d5b6e1038967\" MetricName=\"disk_used_percent\"', 'Average', 300)",
+          "id": "",
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 1,
+          "metricName": "mem_used_percent",
+          "metricQueryType": 0,
+          "namespace": "CWAgent",
+          "period": "$period",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        }
+      ],
+      "title": "Disco %",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "1fm_mPGNk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "dark-red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 10
+      },
+      "id": 172,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "limit": 1,
+          "values": true
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {},
+          "expression": "SEARCH('Namespace=\"CWAgent\" InstanceId=\"i-0dce0d5b6e1038967\" MetricName=\"mem_used_percent\"', 'Average', 300)",
+          "id": "",
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 1,
+          "metricName": "",
+          "metricQueryType": 0,
+          "namespace": "",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Average"
+        }
+      ],
+      "title": "Memória %",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "1fm_mPGNk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "dark-orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 10
+      },
+      "id": 174,
+      "options": {
+        "displayMode": "gradient",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {
+            "InstanceId": "i-0dce0d5b6e1038967"
+          },
+          "expression": "SEARCH('Namespace=\"CWAgent\" InstanceId=\"i-0dce0d5b6e1038967\" MetricName=\"disk_used_percent\"', 'Average', 300)",
+          "id": "",
+          "label": "CPU",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "CPUUtilization",
+          "metricQueryType": 0,
+          "namespace": "AWS/EC2",
+          "period": "$period",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Average"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {
+            "ImageId": "ami-066a7fbea5161f451",
+            "InstanceId": "i-0dce0d5b6e1038967"
+          },
+          "expression": "SEARCH('Namespace=\"CWAgent\" InstanceId=\"i-0dce0d5b6e1038967\" MetricName=\"disk_used_percent\"', 'Average', 300)",
+          "hide": false,
+          "id": "",
+          "label": "Disco",
+          "matchExact": false,
+          "metricEditorMode": 0,
+          "metricName": "disk_used_percent",
+          "metricQueryType": 0,
+          "namespace": "CWAgent",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "C",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Average"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {
+            "ImageId": "ami-066a7fbea5161f451",
+            "InstanceId": "i-0dce0d5b6e1038967"
+          },
+          "expression": "SEARCH('Namespace=\"CWAgent\" InstanceId=\"i-0dce0d5b6e1038967\" MetricName=\"mem_used_percent\"', 'Average', 300)",
+          "hide": false,
+          "id": "",
+          "label": "Memória",
+          "matchExact": false,
+          "metricEditorMode": 0,
+          "metricName": "mem_used_percent",
+          "metricQueryType": 0,
+          "namespace": "CWAgent",
+          "period": "$period",
+          "queryMode": "Metrics",
+          "refId": "B",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Average"
+        }
+      ],
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "1fm_mPGNk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "series",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Inbound"
+            },
+            "properties": [
+              {
+                "id": "custom.transform",
+                "value": "negative-Y"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {
+            "InstanceId": "i-0dce0d5b6e1038967"
+          },
+          "expression": "",
+          "hide": false,
+          "id": "",
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "NetworkIn",
+          "metricQueryType": 0,
+          "namespace": "AWS/EC2",
+          "period": "$period",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {
+            "InstanceId": "i-0dce0d5b6e1038967"
+          },
+          "expression": "",
+          "hide": false,
+          "id": "",
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "NetworkOut",
+          "metricQueryType": 0,
+          "namespace": "AWS/EC2",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "B",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {
+            "InstanceId": "i-0dce0d5b6e1038967"
+          },
+          "expression": "",
+          "hide": false,
+          "id": "",
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "NetworkPacketsIn",
+          "metricQueryType": 0,
+          "namespace": "AWS/EC2",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "C",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {
+            "InstanceId": "i-0dce0d5b6e1038967"
+          },
+          "expression": "",
+          "hide": false,
+          "id": "",
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "NetworkPacketsOut",
+          "metricQueryType": 0,
+          "namespace": "AWS/EC2",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "D",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        }
+      ],
+      "title": "Total network traffic ",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "collapsed": true,
+      "datasource": {
+        "uid": "$datasource"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 26
+      },
+      "id": 32,
+      "panels": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 27
+          },
+          "id": 34,
+          "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
+            "content": "<h4>Este painel monitora o desempenho e a utilização das instâncias EC2, fornecendo informações sobre o uso de CPU, tráfego de rede e pacotes de rede:</h4>\r\n\r\n<ul>\r\n  <li><strong>Utilização de CPU por Instância (máx.%):</strong> Percentual máximo de uso da CPU por instância, indicando a carga e o desempenho computacional.</li>\r\n  <li><strong>Tráfego Total de Rede (Saída + e Entrada -) [bytes/seg]:</strong> Total de dados trafegados por instância, incluindo saída e entrada, em bytes por segundo.</li>\r\n  <li><strong>Tráfego de Rede de Entrada por Instância [bytes/seg]:</strong> Dados recebidos por cada instância, monitorando a carga de entrada.</li>\r\n  <li><strong>Tráfego de Rede de Saída por Instância [bytes/seg]:</strong> Dados enviados por cada instância, monitorando a carga de saída.</li>\r\n  <li><strong>Pacotes de Rede de Entrada por Instância [IOPS]:</strong> Número de pacotes recebidos por cada instância, refletindo a frequência de entrada.</li>\r\n  <li><strong>Pacotes de Rede de Saída por Instância [IOPS]:</strong> Número de pacotes enviados por cada instância, refletindo a frequência de saída.</li>\r\n</ul>\r\n\r\n<div style=\"text-align: center;\">\r\n  <img src=\"https://icon.icepanel.io/AWS/svg/Compute/EC2.svg\" width=\"40\" height=\"40\" alt=\"EC2 logo\"/>\r\n</div>",
+            "mode": "html"
+          },
+          "pluginVersion": "9.3.0",
+          "targets": [
+            {
+              "alias": "",
+              "datasource": {
+                "uid": "$datasource"
+              },
+              "dimensions": {},
+              "expression": "",
+              "id": "",
+              "matchExact": true,
+              "metricEditorMode": 0,
+              "metricName": "",
+              "metricQueryType": 0,
+              "namespace": "",
+              "refId": "A",
+              "region": "default",
+              "statistic": "Average"
+            }
+          ],
+          "title": " ",
+          "transparent": true,
+          "type": "text"
+        }
+      ],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Information",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 27
+      },
+      "id": 132,
+      "panels": [],
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 44,
+      "panels": [],
+      "title": "RDS",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "dark-yellow",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 29
+      },
+      "id": 40,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${datasource}"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "CPUUtilization",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "$period",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Maximum"
+        }
+      ],
+      "title": "CPU %",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "1fm_mPGNk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "NetworkThroughput"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 4,
+        "y": 29
+      },
+      "id": 46,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {},
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "DatabaseConnections",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        }
+      ],
+      "title": "Database connections",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "1fm_mPGNk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              },
+              {
+                "color": "dark-red",
+                "value": 20
+              },
+              {
+                "color": "dark-orange",
+                "value": 70
+              },
+              {
+                "color": "dark-green",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 29
+      },
+      "id": 108,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "FreeStorageSpace",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "$period",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Maximum"
+        }
+      ],
+      "title": "Espaço Livre",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "1fm_mPGNk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 29
+      },
+      "id": 176,
+      "options": {
+        "displayMode": "gradient",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "CPU",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "CPUUtilization",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "$period",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Maximum"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "hide": false,
+          "id": "",
+          "label": "Conexões",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "DatabaseConnections",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "$period",
+          "queryMode": "Metrics",
+          "refId": "B",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        },
+        {
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "1fm_mPGNk"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "hide": false,
+          "id": "",
+          "label": "Espaço Livre ",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "FreeStorageSpace",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "D",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Maximum"
+        }
+      ],
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 34
+      },
+      "id": 119,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${datasource}"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "CPUUtilization",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Maximum"
+        }
+      ],
+      "title": "CPU utilization per instance [%]",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 34
+      },
+      "id": 120,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${datasource}"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "DatabaseConnections",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        }
+      ],
+      "title": "Database connections [count sum]",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "dark-red",
+                "value": null
+              },
+              {
+                "color": "dark-orange",
+                "value": 60
+              },
+              {
+                "color": "green",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 0,
+        "y": 42
+      },
+      "id": 121,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${datasource}"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "FreeStorageSpace",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Average"
+        }
+      ],
+      "title": "Available storage space [GiB]",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 60
+              },
+              {
+                "color": "dark-red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 5,
+        "x": 6,
+        "y": 42
+      },
+      "id": 122,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${datasource}"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "FreeableMemory",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Average"
+        }
+      ],
+      "title": "Available RAM [MB]",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 11,
+        "y": 42
+      },
+      "id": 124,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${datasource}"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "WriteThroughput",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Average"
+        }
+      ],
+      "title": "Write throughput [bytes/sec]",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 60
+              },
+              {
+                "color": "dark-red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "Bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 17,
+        "y": 42
+      },
+      "id": 123,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${datasource}"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "ReadThroughput",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Sum"
+        }
+      ],
+      "title": "Read throughput [bytes/sec]",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 47
+      },
+      "id": 125,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${datasource}"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "ReadLatency",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Maximum"
+        }
+      ],
+      "title": "Read latency [sec]",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 47
+      },
+      "id": 126,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${datasource}"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "WriteLatency",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Maximum"
+        }
+      ],
+      "title": "Write latency [sec]",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "iops"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 55
+      },
+      "id": 127,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${datasource}"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "ReadIOPS",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Average"
+        }
+      ],
+      "title": "Read operations [IOPS]",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "cloudwatch",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "iops"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 55
+      },
+      "id": 128,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "cloudwatch",
+            "uid": "${datasource}"
+          },
+          "dimensions": {
+            "DBInstanceIdentifier": "bancodb"
+          },
+          "expression": "",
+          "id": "",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "label": "",
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "WriteIOPS",
+          "metricQueryType": 0,
+          "namespace": "AWS/RDS",
+          "period": "",
+          "queryMode": "Metrics",
+          "refId": "A",
+          "region": "default",
+          "sqlExpression": "",
+          "statistic": "Average"
+        }
+      ],
+      "title": "Write operations [IOPS]",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 63
+      },
+      "id": 54,
+      "panels": [
+        {
+          "datasource": {
+            "type": "computest-cloudwatchalarm-datasource",
+            "uid": "QHBNRnGNk"
+          },
+          "gridPos": {
+            "h": 16,
+            "w": 24,
+            "x": 0,
+            "y": 168
+          },
+          "id": 140,
+          "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
+            "content": "<h4>Descrição das Métricas de Instâncias RDS</h4>\n\n<p>Este painel exibe métricas importantes para monitoramento de desempenho e capacidade das instâncias RDS, ajudando a identificar gargalos e otimizar o uso dos recursos de banco de dados:</p>\n\n<ul>\n  <li><strong>Utilização de CPU por Cluster [%]:</strong> Mostra a porcentagem de uso da CPU para cada cluster de banco de dados, refletindo a carga de processamento geral.</li>\n  <li><strong>Conexões ao Banco de Dados [contagem]:</strong> Exibe o número total de conexões de clientes ao banco de dados, monitorando a carga de conexões para cada cluster e instância.</li>\n  <li><strong>Utilização de CPU por Instância [%]:</strong> Mostra a porcentagem de uso da CPU para cada instância RDS, indicando o uso de processamento individual.</li>\n  <li><strong>Espaço de Armazenamento Disponível [GiB]:</strong> Mede o espaço de armazenamento ainda disponível no banco de dados, ajudando a prever e evitar escassez de armazenamento.</li>\n  <li><strong>Memória RAM Disponível [MB]:</strong> Exibe a quantidade de memória RAM livre, essencial para acompanhar a disponibilidade de memória e o desempenho do banco de dados.</li>\n  <li><strong>Taxa de Leitura [bytes/seg]:</strong> Mede o volume de dados lidos por segundo, refletindo a taxa de leitura de dados do disco para o banco de dados.</li>\n  <li><strong>Taxa de Escrita [bytes/seg]:</strong> Indica o volume de dados escritos por segundo, monitorando a taxa de gravação de dados no disco.</li>\n  <li><strong>Latência de Leitura [seg]:</strong> Tempo médio de espera para operações de leitura, indicando o desempenho e a resposta de leitura.</li>\n  <li><strong>Latência de Escrita [seg]:</strong> Tempo médio de espera para operações de escrita, indicando o desempenho e a resposta de gravação.</li>\n  <li><strong>Operações de Leitura [IOPS]:</strong> Número de operações de leitura por segundo, ajudando a monitorar a carga de leitura no banco de dados.</li>\n  <li><strong>Operações de Escrita [IOPS]:</strong> Número de operações de escrita por segundo, refletindo a carga de gravação no banco de dados.</li>\n</ul>\n\n<div style=\"text-align: center;\">\n  <img src=\"https://icon.icepanel.io/AWS/svg/Database/RDS.svg\" width=\"40\" height=\"40\" alt=\"RDS logo\"/>\n</div>\n",
+            "mode": "html"
+          },
+          "pluginVersion": "9.3.0",
+          "transparent": true,
+          "type": "text"
+        }
+      ],
+      "title": "Information",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 64
+      },
+      "id": 136,
+      "panels": [],
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 65
+      },
+      "id": 60,
+      "panels": [],
+      "title": "CloudTrail",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "OmS9iPMNz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 66
+      },
+      "id": 102,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7VhCGGNz"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n    CONVERT_TZ(eventTime, '+00:00', '+03:00') AS Data_hora,  -- Converte o horário para o fuso de Brasília (UTC+3)\r\n    eventSource AS Evento                                   -- Exibe o serviço que gerou o evento\r\nFROM\r\n    cloudtrail_logs\r\nWHERE\r\n    eventTime >= (                                           -- O evento mais antigo\r\n        SELECT MIN(eventTime) \r\n        FROM cloudtrail_logs\r\n    ) \r\n    AND eventTime <= (                                       -- O evento mais recente\r\n        SELECT MAX(eventTime) \r\n        FROM cloudtrail_logs\r\n    )\r\nORDER BY\r\n    Data_hora DESC;                                           -- Ordena os eventos pelo horário ajustado para Brasília\r\n",
+          "refId": "A",
+          "region": "default",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Consumo DIario de Serviços",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "OmS9iPMNz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "index": 0,
+                  "text": "Sem Informações"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 74
+      },
+      "id": 106,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7VhCGGNz"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "rawQuery": true,
+          "rawSql": "SELECT eventSource AS Serviço, \r\n       COUNT(*) AS Chamadas_API, \r\n       DATE_FORMAT(eventTime, '%Y-%m-%d %H:%i:%s') AS Data_Hora\r\nFROM cloudtrail_logs\r\nGROUP BY Serviço, Data_Hora\r\nORDER BY Data_Hora DESC;\r\n",
+          "refId": "A",
+          "region": "default",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Chamadas de API por Serviço",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "OmS9iPMNz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Usuário"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 220
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 74
+      },
+      "id": 104,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7VhCGGNz"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "rawQuery": true,
+          "rawSql": "SELECT eventName AS Evento, \r\n       eventSource AS Serviços, \r\n       SUBSTRING_INDEX(userIdentity, ':user/', -1) AS Usuário, \r\n       DATE_FORMAT(eventTime, '%Y-%m-%d %H:%i:%s') as Data_Hora,\r\n       sourceIPAddress AS IP_Fonte\r\nFROM cloudtrail_logs\r\nwhere userIdentity is not null \r\nORDER BY eventTime DESC \r\nLIMIT 50;\r\n",
+          "refId": "A",
+          "region": "default",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Histórico de Alterações de Serviços",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "OmS9iPMNz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 83
+      },
+      "id": 160,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "alarmNamePrefix": "",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7VhCGGNz"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "includeAlarm": true,
+          "includeInsufficientData": true,
+          "includeOk": false,
+          "includeTypeComposite": true,
+          "includeTypeMetric": true,
+          "rawQuery": true,
+          "rawSql": "SELECT eventSource AS Serviço, \r\n       errorCode AS Tipo_Erro, \r\n       COUNT(*) AS Qtd_Erro, \r\n       DATE_FORMAT(eventTime, '%Y-%m-%d %H:%i:%s') AS Periodo\r\nFROM cloudtrail_logs\r\nWHERE errorCode IS NOT NULL \r\n  AND eventTime BETWEEN NOW() - INTERVAL 7 DAY AND NOW()\r\nGROUP BY Serviço, Tipo_Erro, Periodo\r\nORDER BY Periodo DESC;\r\n",
+          "refId": "A",
+          "region": "default",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Eventos por Tipo de Ação (API)",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "OmS9iPMNz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 83
+      },
+      "id": 158,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "OmS9iPMNz"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT SUBSTRING_INDEX(userIdentity, ':user/', -1) AS Usuário, \r\n       eventName AS Evento, \r\n       COUNT(*) AS Quantidade, \r\n       DATE_FORMAT(eventTime, '%Y-%m-%d %H:%i:%s') AS Periodo\r\nFROM cloudtrail_logs\r\nWHERE eventTime BETWEEN NOW() - INTERVAL 7 DAY AND NOW() and userIdentity is not NULL\r\nGROUP BY Usuário, Evento, Periodo\r\nORDER BY Periodo DESC;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Atividades por Usuário",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "OmS9iPMNz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 91
+      },
+      "id": 162,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "OmS9iPMNz"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT sourceIPAddress AS IP_Fonte, \r\n       COUNT(*) AS Chamadas, \r\n       DATE_FORMAT(eventTime, '%Y-%m-%d %H:%i:%s') AS Periodo\r\nFROM cloudtrail_logs\r\nWHERE eventTime BETWEEN NOW() - INTERVAL 7 DAY AND NOW()\r\nGROUP BY IP_Fonte, Periodo\r\nORDER BY Periodo DESC, Chamadas DESC;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Acessos por IP",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "OmS9iPMNz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 91
+      },
+      "id": 164,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "OmS9iPMNz"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT \r\n    eventName AS Nome_Evento,\r\n    COUNT(*) AS Total_Erros,\r\n    DATE_FORMAT(eventTime, '%Y-%m-%d %H:%i:%s') AS Periodo\r\nFROM cloudtrail_logs\r\nWHERE errorCode IS NOT NULL\r\n    AND eventTime BETWEEN NOW() - INTERVAL 7 DAY AND NOW()\r\nGROUP BY Nome_Evento, Periodo\r\nORDER BY Periodo DESC, Total_Erros DESC;\r\n",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Eventos com Falhas",
+      "transparent": true,
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "computest-cloudwatchalarm-datasource",
+        "uid": "QHBNRnGNk"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 99
+      },
+      "id": 142,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<h4>Descrição das Métricas de Monitoramento do CloudTrail</h4>\n\n<p>Este painel fornece uma visão detalhada do uso e das atividades de API, ajudando a rastrear alterações em recursos e o consumo diário de serviços na AWS:</p>\n\n<ul>\n  <li><strong>Consumo Diário de Serviços:</strong> Exibe o uso diário de diferentes serviços da AWS, permitindo monitorar a variação de consumo e identificar picos de utilização.</li>\n  <li><strong>Visão Geral de Atividades de API:</strong> Apresenta um resumo das chamadas de API realizadas, fornecendo uma visão clara das interações com serviços e ajudando a rastrear ações.</li>\n  <li><strong>Histórico de Alterações de Recursos:</strong> Registra as alterações feitas nos recursos da AWS, permitindo acompanhar modificações e facilitar auditorias de conformidade.</li>\n</ul>\n\n<div style=\"text-align: center;\">\n  <img src=\"https://icon.icepanel.io/AWS/svg/Management-Governance/CloudTrail.svg\" width=\"40\" height=\"40\" alt=\"CloudTrail logo\"/>\n</div>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.3.0",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 107
+      },
+      "id": 138,
+      "panels": [],
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 108
+      },
+      "id": 62,
+      "panels": [
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "OmS9iPMNz"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "center",
+                "displayMode": "auto",
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 12,
+            "x": 0,
+            "y": 67
+          },
+          "id": 166,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": []
+          },
+          "pluginVersion": "9.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "mysql",
+                "uid": "OmS9iPMNz"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "SELECT \r\n    line_item_usage_account_id AS Conta,               -- Conta da AWS\r\n    product_product_name AS Serviço,                   -- Serviço da AWS\r\n    COUNT(*) AS Total_Ultilizado,                      -- Número total de itens de custo\r\n    ROUND(SUM(line_item_blended_cost), 2) AS Custo_Por_Mês, -- Custo total no mês atual com 2 casas decimais\r\n    ROUND((\r\n        SELECT SUM(line_item_blended_cost)                  -- Soma de todos os custos totais\r\n        FROM cur AS total_cost\r\n        WHERE total_cost.line_item_usage_start_date >= DATE_FORMAT(CURDATE(), '%Y-%m-01') \r\n          AND total_cost.line_item_usage_end_date <= CURDATE()\r\n    ), 2) AS Custo_Total_Do_Mês -- Custo total de todos os serviços com 2 casas decimais\r\nFROM \r\n    cur                                                -- Nome da tabela CUR\r\nWHERE \r\n    line_item_usage_start_date >= DATE_FORMAT(CURDATE(), '%Y-%m-01') -- Início do mês atual (1º dia do mês)\r\n    AND line_item_usage_end_date <= CURDATE()          -- Até a data atual\r\nGROUP BY \r\n    line_item_usage_account_id, \r\n    product_product_name\r\nORDER BY \r\n    Custo_Por_Mês DESC;\r\n",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Fatura Atual",
+          "transparent": true,
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "OmS9iPMNz"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "center",
+                "displayMode": "auto",
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 10,
+            "w": 12,
+            "x": 12,
+            "y": 67
+          },
+          "id": 168,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": false,
+                "displayName": "Transfer_Family"
+              }
+            ]
+          },
+          "pluginVersion": "9.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "mysql",
+                "uid": "OmS9iPMNz"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "rawQuery": true,
+              "rawSql": "-- Primeira linha com o Valor Total\r\nSELECT 'Valor Total' AS Servico, CONCAT('$', ROUND(SUM(Transfer_Family + Tax + EC2_Outros + Route_53 + Registrar + EC2_Instancias + VPC + Relational_Database_Service + S3 + Budgets + EC2_Container_Registry_ECR + Elastic_File_System + Backup + Amplify + Lambda + CloudShell + CloudWatch + Key_Management_Service + SNS + Glue), 2)) AS Valor\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\n-- Demais serviços com seus valores\r\nSELECT 'Transfer Family', CONCAT('$', ROUND(SUM(Transfer_Family), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'Tax', CONCAT('$', ROUND(SUM(Tax), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'EC2 Outros', CONCAT('$', ROUND(SUM(EC2_Outros), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'Route 53', CONCAT('$', ROUND(SUM(Route_53), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'Registrar', CONCAT('$', ROUND(SUM(Registrar), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'EC2 Instâncias', CONCAT('$', ROUND(SUM(EC2_Instancias), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'VPC', CONCAT('$', ROUND(SUM(VPC), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'Relational Database Service', CONCAT('$', ROUND(SUM(Relational_Database_Service), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'S3', CONCAT('$', ROUND(SUM(S3), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'Budgets', CONCAT('$', ROUND(SUM(Budgets), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'EC2 Container Registry (ECR)', CONCAT('$', ROUND(SUM(EC2_Container_Registry_ECR), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'Elastic File System (EFS)', CONCAT('$', ROUND(SUM(Elastic_File_System), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'Backup', CONCAT('$', ROUND(SUM(Backup), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'Amplify', CONCAT('$', ROUND(SUM(Amplify), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'Lambda', CONCAT('$', ROUND(SUM(Lambda), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'CloudShell', CONCAT('$', ROUND(SUM(CloudShell), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'CloudWatch', CONCAT('$', ROUND(SUM(CloudWatch), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'Key Management Service (KMS)', CONCAT('$', ROUND(SUM(Key_Management_Service), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'SNS', CONCAT('$', ROUND(SUM(SNS), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01')\r\n\r\nUNION ALL\r\n\r\nSELECT 'Glue', CONCAT('$', ROUND(SUM(Glue), 2))\r\nFROM cur\r\nWHERE servico >= DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01')\r\n  AND servico < DATE_FORMAT(NOW(), '%Y-%m-01');\r\n",
+              "refId": "A",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Fatura do mês anterior",
+          "transparent": true,
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "OmS9iPMNz"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto",
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 77
+          },
+          "id": 64,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true
+          },
+          "pluginVersion": "9.3.0",
+          "targets": [
+            {
+              "alarmNamePrefix": "",
+              "dataset": "billingdb",
+              "datasource": {
+                "type": "mysql",
+                "uid": "t7VhCGGNz"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "includeAlarm": true,
+              "includeInsufficientData": true,
+              "includeOk": false,
+              "includeTypeComposite": true,
+              "includeTypeMetric": true,
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT product_product_name FROM billingdb.cur LIMIT 100;\r\n",
+              "refId": "A",
+              "region": "default",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [
+                      {
+                        "name": "product_servicename",
+                        "type": "functionParameter"
+                      }
+                    ],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [],
+                "limit": 50
+              },
+              "table": "billing_usage"
+            }
+          ],
+          "title": "Services",
+          "transparent": true,
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "OmS9iPMNz"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto",
+                "inspect": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "identity_line_item_id"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 172
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "line_item_usage_type"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 209
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "line_item_usage_amount"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 211
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "line_item_blended_cost"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 228
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 77
+          },
+          "id": 66,
+          "options": {
+            "footer": {
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": false,
+                "displayName": "line_item_usage_amount"
+              }
+            ]
+          },
+          "pluginVersion": "9.3.0",
+          "targets": [
+            {
+              "alarmNamePrefix": "",
+              "datasource": {
+                "type": "mysql",
+                "uid": "t7VhCGGNz"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "includeAlarm": true,
+              "includeInsufficientData": true,
+              "includeOk": false,
+              "includeTypeComposite": true,
+              "includeTypeMetric": true,
+              "rawQuery": true,
+              "rawSql": "SELECT\r\n    product_product_name AS \"Serviço\",\r\n    pricing_currency AS \"Moeda\",\r\n    line_item_usage_amount AS \"Vezes de Uso\",\r\n    CONCAT('$', FORMAT(SUM(pricing_public_on_demand_cost), 2)) AS \"Custo Total Sob Demanda\"\r\nFROM\r\n    billingdb.cur\r\nGROUP BY\r\n    product_product_name, pricing_currency;\r\n",
+              "refId": "A",
+              "region": "default",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Resumo de Uso e Custo Sob Demanda",
+          "transparent": true,
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "OmS9iPMNz"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 85
+          },
+          "id": 68,
+          "options": {
+            "displayLabels": [
+              "percent"
+            ],
+            "legend": {
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true,
+              "values": []
+            },
+            "pieType": "donut",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "9.3.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "mysql",
+                "uid": "t7VhCGGNz"
+              },
+              "dimensions": {},
+              "editorMode": "code",
+              "expression": "",
+              "format": "table",
+              "id": "",
+              "label": "",
+              "matchExact": true,
+              "metricEditorMode": 0,
+              "metricName": "",
+              "metricQueryType": 0,
+              "namespace": "",
+              "period": "",
+              "queryMode": "Metrics",
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT\r\n    line_item_usage_type AS \"Tipo de Uso\",\r\n    line_item_usage_amount AS \"Quantidade de Uso\",\r\n    product_product_name AS \"Serviço\"\r\nFROM \r\n    billingdb.cur\r\nWHERE product_product_name = 'AWS Lambda';\r\n",
+              "refId": "A",
+              "region": "default",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              },
+              "sqlExpression": "",
+              "statistic": "Average"
+            }
+          ],
+          "title": "AWS Lambda",
+          "transparent": true,
+          "type": "piechart"
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "OmS9iPMNz"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 85
+          },
+          "id": 74,
+          "options": {
+            "displayLabels": [
+              "percent"
+            ],
+            "legend": {
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "pieType": "donut",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "alarmNamePrefix": "",
+              "datasource": {
+                "type": "mysql",
+                "uid": "t7VhCGGNz"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "includeAlarm": true,
+              "includeInsufficientData": true,
+              "includeOk": false,
+              "includeTypeComposite": true,
+              "includeTypeMetric": true,
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT\r\n    line_item_usage_type AS \"Tipo de Uso\",\r\n    line_item_usage_amount AS \"Quantidade de Uso\",\r\n    product_product_name AS \"Serviço\"\r\nFROM \r\n    billingdb.cur\r\nWHERE product_product_name = 'AmazonCloudWatch';\r\n",
+              "refId": "A",
+              "region": "default",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "CloudWatch",
+          "transparent": true,
+          "type": "piechart"
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "OmS9iPMNz"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 93
+          },
+          "id": 86,
+          "options": {
+            "displayLabels": [
+              "percent"
+            ],
+            "legend": {
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "pieType": "donut",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "alarmNamePrefix": "",
+              "datasource": {
+                "type": "mysql",
+                "uid": "t7VhCGGNz"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "includeAlarm": true,
+              "includeInsufficientData": true,
+              "includeOk": false,
+              "includeTypeComposite": true,
+              "includeTypeMetric": true,
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT\r\n    line_item_usage_type AS \"Tipo de Uso\",\r\n    line_item_usage_amount AS \"Quantidade de Uso\",\r\n    product_product_name AS \"Serviço\"\r\nFROM \r\n    billingdb.cur\r\nWHERE product_product_name = 'Amazon Simple Notification Service';\r\n",
+              "refId": "A",
+              "region": "default",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Amazon Simple Notification Service ",
+          "transparent": true,
+          "type": "piechart"
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "OmS9iPMNz"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 93
+          },
+          "id": 88,
+          "options": {
+            "displayLabels": [
+              "percent"
+            ],
+            "legend": {
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "pieType": "donut",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "alarmNamePrefix": "",
+              "datasource": {
+                "type": "mysql",
+                "uid": "t7VhCGGNz"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "includeAlarm": true,
+              "includeInsufficientData": true,
+              "includeOk": false,
+              "includeTypeComposite": true,
+              "includeTypeMetric": true,
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT\r\n    line_item_usage_type AS \"Tipo de Uso\",\r\n    line_item_usage_amount AS \"Quantidade de Uso\",\r\n    product_product_name AS \"Serviço\"\r\nFROM \r\n    billingdb.cur\r\nWHERE product_product_name = 'AWS Key Management Service';\r\n",
+              "refId": "A",
+              "region": "default",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "AWS Key Management Service",
+          "transparent": true,
+          "type": "piechart"
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "OmS9iPMNz"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 101
+          },
+          "id": 92,
+          "options": {
+            "displayLabels": [
+              "percent"
+            ],
+            "legend": {
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "pieType": "donut",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "alarmNamePrefix": "",
+              "datasource": {
+                "type": "mysql",
+                "uid": "t7VhCGGNz"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "includeAlarm": true,
+              "includeInsufficientData": true,
+              "includeOk": false,
+              "includeTypeComposite": true,
+              "includeTypeMetric": true,
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT\r\n    line_item_usage_type AS \"Tipo de Uso\",\r\n    line_item_usage_amount AS \"Quantidade de Uso\",\r\n    product_product_name AS \"Serviço\"\r\nFROM \r\n    billingdb.cur\r\nWHERE product_product_name = 'Amazon Relational Database Service';\r\n",
+              "refId": "A",
+              "region": "default",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Amazon Relational Database Service",
+          "transparent": true,
+          "type": "piechart"
+        },
+        {
+          "datasource": {},
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 101
+          },
+          "id": 82,
+          "options": {
+            "displayLabels": [
+              "percent"
+            ],
+            "legend": {
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "pieType": "donut",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "alarmNamePrefix": "",
+              "datasource": {
+                "type": "mysql",
+                "uid": "t7VhCGGNz"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "includeAlarm": true,
+              "includeInsufficientData": true,
+              "includeOk": false,
+              "includeTypeComposite": true,
+              "includeTypeMetric": true,
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT\r\n    line_item_usage_type AS \"Tipo de Uso\",\r\n    line_item_usage_amount AS \"Quantidade de Uso\",\r\n    product_product_name AS \"Serviço\"\r\nFROM \r\n    billingdb.cur\r\nWHERE product_product_name = 'AWS CloudTrail';\r\n",
+              "refId": "A",
+              "region": "default",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "AWS CloudTrail",
+          "transparent": true,
+          "type": "piechart"
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "OmS9iPMNz"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 109
+          },
+          "id": 72,
+          "options": {
+            "displayLabels": [
+              "percent"
+            ],
+            "legend": {
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "pieType": "donut",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "alarmNamePrefix": "",
+              "datasource": {
+                "type": "mysql",
+                "uid": "t7VhCGGNz"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "includeAlarm": true,
+              "includeInsufficientData": true,
+              "includeOk": false,
+              "includeTypeComposite": true,
+              "includeTypeMetric": true,
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT\r\n    line_item_usage_type AS \"Tipo de Uso\",\r\n    line_item_usage_amount AS \"Quantidade de Uso\",\r\n    product_product_name AS \"Serviço\"\r\nFROM \r\n    billingdb.cur\r\nWHERE product_product_name = 'Amazon Simple Storage Service';\r\n",
+              "refId": "A",
+              "region": "default",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "S3",
+          "transparent": true,
+          "type": "piechart"
+        },
+        {
+          "datasource": {},
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 109
+          },
+          "id": 78,
+          "options": {
+            "displayLabels": [
+              "percent"
+            ],
+            "legend": {
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "pieType": "donut",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "alarmNamePrefix": "",
+              "datasource": {
+                "type": "mysql",
+                "uid": "t7VhCGGNz"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "includeAlarm": true,
+              "includeInsufficientData": true,
+              "includeOk": false,
+              "includeTypeComposite": true,
+              "includeTypeMetric": true,
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT\r\n    line_item_usage_type AS \"Tipo de Uso\",\r\n    line_item_usage_amount AS \"Quantidade de Uso\",\r\n    product_product_name AS \"Serviço\"\r\nFROM \r\n    billingdb.cur\r\nWHERE product_product_name = 'Amazon Virtual Private Cloud';\r\n",
+              "refId": "A",
+              "region": "default",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": " Amazon Virtual Private Cloud",
+          "transparent": true,
+          "type": "piechart"
+        },
+        {
+          "datasource": {},
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 117
+          },
+          "id": 76,
+          "options": {
+            "displayLabels": [
+              "percent"
+            ],
+            "legend": {
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "pieType": "donut",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "alarmNamePrefix": "",
+              "datasource": {
+                "type": "mysql",
+                "uid": "t7VhCGGNz"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "includeAlarm": true,
+              "includeInsufficientData": true,
+              "includeOk": false,
+              "includeTypeComposite": true,
+              "includeTypeMetric": true,
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT\r\n    identity_line_item_id AS \"ID da Linha de Item\",\r\n    line_item_usage_type AS \"Tipo de Uso\",\r\n    line_item_usage_amount AS \"Quantidade de Uso\",\r\n    line_item_blended_cost AS \"Custo Misturado\",\r\n    product_product_name AS \"Serviço\",\r\n    pricing_currency AS \"Moeda\",\r\n    pricing_public_on_demand_cost AS \"Custo Sob Demanda\"\r\nFROM \r\n    billingdb.cur\r\nWHERE product_product_name = 'AWS Data Transfer';\r\n",
+              "refId": "A",
+              "region": "default",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "AWS Data Transfer",
+          "transparent": true,
+          "type": "piechart"
+        },
+        {
+          "datasource": {},
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              },
+              "mappings": []
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 117
+          },
+          "id": 94,
+          "options": {
+            "displayLabels": [
+              "percent"
+            ],
+            "legend": {
+              "displayMode": "list",
+              "placement": "right",
+              "showLegend": true
+            },
+            "pieType": "donut",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "alarmNamePrefix": "",
+              "datasource": {
+                "type": "mysql",
+                "uid": "t7VhCGGNz"
+              },
+              "editorMode": "code",
+              "format": "table",
+              "includeAlarm": true,
+              "includeInsufficientData": true,
+              "includeOk": false,
+              "includeTypeComposite": true,
+              "includeTypeMetric": true,
+              "rawQuery": true,
+              "rawSql": "SELECT DISTINCT\r\n    line_item_usage_type AS \"Tipo de Uso\",\r\n    line_item_usage_amount AS \"Quantidade de Uso\",\r\n    product_product_name AS \"Serviço\"\r\nFROM \r\n    billingdb.cur\r\nWHERE product_product_name = 'Amazon Elastic Compute Cloud';\r\n",
+              "refId": "A",
+              "region": "default",
+              "sql": {
+                "columns": [
+                  {
+                    "parameters": [],
+                    "type": "function"
+                  }
+                ],
+                "groupBy": [
+                  {
+                    "property": {
+                      "type": "string"
+                    },
+                    "type": "groupBy"
+                  }
+                ],
+                "limit": 50
+              }
+            }
+          ],
+          "title": "Amazon Elastic Compute Cloud",
+          "transparent": true,
+          "type": "piechart"
+        },
+        {
+          "datasource": {
+            "type": "computest-cloudwatchalarm-datasource",
+            "uid": "QHBNRnGNk"
+          },
+          "gridPos": {
+            "h": 15,
+            "w": 24,
+            "x": 0,
+            "y": 125
+          },
+          "id": 98,
+          "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
+            "content": "<h4>Descrição das Métricas de Monitoramento do Relatório de Custo e Uso (CUR)</h4>\r\n\r\n<p>Este painel fornece uma visão abrangente sobre o consumo e os custos dos serviços da AWS, permitindo monitorar e gerenciar gastos com base nas atividades diárias:</p>\r\n\r\n<ul>\r\n  <li><strong>Serviços:</strong> Apresenta um resumo dos custos por serviço, ajudando a identificar quais serviços estão gerando mais despesas.</li>\r\n  <li><strong>Fatura Atual:</strong> Exibe o valor atualizado da fatura até o momento, permitindo o acompanhamento do custo acumulado no período.</li>\r\n  <li><strong>AWS Lambda:</strong> Monitora o custo e o uso das funções Lambda, fornecendo insights sobre a eficiência das execuções de código sob demanda.</li>\r\n  <li><strong>Amazon Athena:</strong> Analisa o custo das consultas realizadas no Athena, facilitando a visualização dos gastos com análise de dados.</li>\r\n  <li><strong>Amazon Simple Storage Service (S3):</strong> Exibe o uso e os custos associados ao armazenamento e transferência de dados no S3.</li>\r\n  <li><strong>Amazon CloudWatch:</strong> Mostra os custos relacionados ao monitoramento de métricas, permitindo gerenciar o uso do CloudWatch.</li>\r\n  <li><strong>AWS Data Transfer:</strong> Apresenta o custo do tráfego de dados entre regiões e zonas, ajudando a controlar despesas de transferência.</li>\r\n  <li><strong>Amazon Virtual Private Cloud (VPC):</strong> Monitora os custos associados à infraestrutura de rede privada virtual na AWS.</li>\r\n  <li><strong>CloudWatch Events:</strong> Exibe o custo relacionado ao uso de eventos no CloudWatch para agendamento e automação de tarefas.</li>\r\n  <li><strong>AWS CloudTrail:</strong> Apresenta o custo associado ao registro e auditoria de atividades na conta.</li>\r\n  <li><strong>Amazon Simple Notification Service (SNS):</strong> Monitora os custos de notificações e mensagens enviadas por meio do SNS.</li>\r\n  <li><strong>Amazon Simple Queue Service (SQS):</strong> Exibe o custo relacionado ao uso de filas para o processamento assíncrono de mensagens.</li>\r\n  <li><strong>AWS Key Management Service (KMS):</strong> Monitora os custos associados à gestão e uso de chaves de criptografia no KMS.</li>\r\n  <li><strong>AWS Glue:</strong> Exibe os custos das operações de ETL e processamento de dados realizadas pelo Glue.</li>\r\n  <li><strong>Amazon Relational Database Service (RDS):</strong> Monitora o custo e uso das instâncias de banco de dados gerenciadas no RDS.</li>\r\n  <li><strong>Amazon Elastic Compute Cloud (EC2):</strong> Exibe o custo de uso das instâncias EC2, permitindo controlar o uso de recursos computacionais.</li>\r\n</ul>\r\n\r\n<div style=\"text-align: center;\">\r\n  <img src=\"https://icon.icepanel.io/AWS/svg/Cloud-Financial-Management/Cost-and-Usage-Report.svg\" width=\"40\" height=\"40\" alt=\"CUR logo\"/>\r\n</div>\r\n",
+            "mode": "markdown"
+          },
+          "pluginVersion": "9.3.0",
+          "transparent": true,
+          "type": "text"
+        }
+      ],
+      "title": "CUR",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 109
+      },
+      "id": 146,
+      "panels": [],
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "computest-cloudwatchalarm-datasource",
+        "uid": "QHBNRnGNk"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 0,
+        "y": 110
+      },
+      "id": 150,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "Integrantes :\n\n- Marcelo Mesquita\n- Kauã \n- Rafael\n- Bruno",
+        "mode": "markdown"
+      },
+      "pluginVersion": "9.3.0",
+      "transparent": true,
+      "type": "text"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [
+    "AWS",
+    "CloudWatch",
+    "CloudTrail",
+    "S3",
+    "MySql",
+    "Athena"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "CloudWatch",
+          "value": "CloudWatch"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "cloudwatch",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "allValue": "us-east-1",
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "cloudwatch",
+          "uid": "${datasource}"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Region",
+        "multi": false,
+        "name": "region",
+        "options": [],
+        "query": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "60",
+          "value": "60"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Period [sec]",
+        "multi": false,
+        "name": "period",
+        "options": [
+          {
+            "selected": true,
+            "text": "60",
+            "value": "60"
+          },
+          {
+            "selected": false,
+            "text": "300",
+            "value": "300"
+          },
+          {
+            "selected": false,
+            "text": "3600",
+            "value": "3600"
+          }
+        ],
+        "query": "60,300,3600",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "BlockTime",
+  "uid": "SIhqaKGHk",
+  "version": 26,
+  "weekStart": ""
+}
