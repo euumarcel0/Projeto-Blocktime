@@ -1,57 +1,94 @@
-
-.kanban {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+#kanban {
+  display: flex;
+  flex-wrap: nowrap; /* Garante que os itens fiquem em uma linha única */
+  gap: 160px; /* Aumenta o espaçamento entre os quadros */
+  margin-left: 240px; /* Empurra os quadros para a direita */
+  margin-right: 0; /* Removendo o limite da margem direita */
+  width: calc(
+    100% - 500px
+  ); /* Ocupa o restante da largura da tela após o margin-left */
 }
 
-.kanban-column {
-    width: 30%;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    min-height: 200px;
+.list {
+  border: 1px solid rgba(63, 55, 181, 0.94); /* Borda com cor suave */
+  padding: 10px;
+  flex: 1; /* Faz com que todas as listas tenham o mesmo tamanho */
+  min-width: 200px; /* Garantir que cada lista tenha pelo menos 200px de largura */
+  background: rgba(63, 55, 181, 0.15); /* Fundo azul suave com transparência */
+  backdrop-filter: blur(13.1px); /* Efeito de desfoque no fundo */
+  -webkit-backdrop-filter: blur(13.1px); /* Suporte para Safari */
+  border-radius: 16px; /* Bordas arredondadas */
+  font-family: Arial, sans-serif; /* Definindo a fonte */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Alinha o conteúdo ao centro */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-.kanban-column h2 {
-    text-align: center;
-    color: #006666;
+.list h2 {
+  /* Ajuste para o título da lista */
+  text-align: center; /* Centraliza o texto */
+  margin: 0; /* Remove a margem padrão */
 }
 
-.kanban-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.card {
+  border: 1px solid #ddd;
+  margin: 5px 0;
+  padding: 10px;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Fundo branco com leve transparência */
+  border-radius: 10px; /* Bordas arredondadas */
+  color: #000; /* Texto preto */
+  font-size: 14px;
+
+  /* Garantir que todos os cartões tenham o mesmo tamanho */
+  width: 100%; /* Faz com que o cartão ocupe 100% da largura da lista */
+  max-width: 200px; /* Define um tamanho máximo para evitar que o cartão fique muito largo */
+  box-sizing: border-box; /* Inclui o padding e borda no cálculo do tamanho total */
 }
 
-.kanban-card {
-    background-color: #ffffff;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+/* Responsividade */
+@media (max-width: 1200px) {
+  #kanban {
+    gap: 80px; /* Reduz o espaçamento em telas menores */
+  }
+
+  .list {
+    min-width: 180px; /* Diminui a largura mínima das listas */
+    margin: 0 auto; /* Centraliza as listas */
+  }
+
+  .card {
+    max-width: 180px; /* Ajusta o tamanho máximo dos cartões */
+  }
 }
 
-.kanban-card a {
-    text-decoration: none;
-    color: #333;
+@media (max-width: 768px) {
+  #kanban {
+    flex-direction: column; /* Muda para uma coluna em telas pequenas */
+    gap: 40px; /* Reduz ainda mais o espaçamento */
+    margin-left: 0; /* Remove o espaçamento à esquerda */
+    width: 100%; /* Ocupa toda a largura da tela */
+  }
+
+  .list {
+    width: 100%; /* Faz as listas ocuparem 100% da largura */
+    margin: 0; /* Remove qualquer margem */
+    padding: 20px; /* Aumenta o padding das listas para dar mais espaço */
+  }
+
+  .card {
+    max-width: 100%; /* Faz os cartões ocuparem 100% da largura da lista */
+  }
 }
 
-.kanban-card:hover {
-    background-color: #e0f7fa;
-}
-
-.kanban-card a:hover {
-    text-decoration: underline;
-}
-
-.kanban-column {
-    min-height: 300px;
-    position: relative;
-}
-
-.kanban-card.dragging {
-    opacity: 0.5;
+@media (max-width: 480px) {
+  .card {
+    font-size: 12px; /* Reduz o tamanho da fonte em telas muito pequenas */
+    padding: 8px; /* Diminui o padding dos cartões */
+  }
 }
