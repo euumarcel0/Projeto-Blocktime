@@ -92,10 +92,16 @@ Siga o processo usual para acessar a sua instância EC2 via SSH.
    echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com beta main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
 
    sudo apt-get update
+   sudo apt upgrade
+   sudo apt-get install -y apt-transport-https software-properties-common wget
+   sudo mkdir -p /etc/apt/keyrings/
+   wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null
+   echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+   echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+   sudo apt-get install grafana -y 
    sudo apt-get install grafana
-   sudo apt-get install grafana-enterprise
-   sudo systemctl start grafana-server
-   sudo systemctl enable grafana-server
+   sudo systemctl start grafana-server.service
+   sudo systemctl enable grafana-server.service
 
    OU
 
@@ -108,6 +114,8 @@ Siga o processo usual para acessar a sua instância EC2 via SSH.
    pip3 install pyarrow 
    pip3 install s3fs  
    sudo pip3 install mysql-connector-python
+
+
    ```
 
 ### 3. **Configuração com a AWS**
