@@ -253,6 +253,8 @@ Siga o processo usual para acessar a sua instância EC2 via SSH.
   import pandas as pd
 import mysql.connector
 from mysql.connector import Error
+import boto3
+from io import StringIO
 
 def conectar_banco():
     """Conecta ao banco de dados MySQL"""
@@ -270,68 +272,65 @@ def conectar_banco():
         print(f"Erro ao conectar ao banco de dados: {e}")
         return None
 
+def carregar_csv_do_s3(bucket, caminho_arquivo):
+    """Carrega um arquivo CSV do S3"""
+    try:
+        s3_client = boto3.client('s3')
+        response = s3_client.get_object(Bucket=bucket, Key=caminho_arquivo)
+        csv_data = response['Body'].read().decode('utf-8')
+        return pd.read_csv(StringIO(csv_data))
+    except Exception as e:
+        print(f"Erro ao carregar o arquivo do S3: {e}")
+        return None
+
 def inserir_dados(connection, data):
     """Insere os dados do DataFrame na tabela MySQL"""
     cursor = connection.cursor()
-    # Definindo o SQL de inserção
-    sql = """ 
-        INSERT INTO cur (Servico, Relational_Database_Service, EC2_Instancias, Tax, EC2_Outros, VPC, Route_53, 
-                         CloudWatch, CloudTrail, S3, Budgets, EC2_Container_Registry_ECR, Elastic_File_System, 
-                         Backup, Amplify, Lambda, SNS, Glue, Key_Management_Service, Custos_totais)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    sql = """
+        INSERT INTO custos_servicos (
+            servico, custo_banco_relacional, custo_instancias_ec2, custo_impostos, custo_ec2_outros,
+            custo_vpc, custo_route53, custo_cloudwatch, custo_cloudtrail, custo_s3, custo_orcamentos,
+            custo_ecr, custo_efs, custo_backup, custo_amplify, custo_lambda, custo_sns, custo_glue,
+            custo_kms, custo_total
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
-    # Preenchendo valores NaN por None para garantir que não haja erro ao inserir no banco
-    data = data.fillna(value=0)
-    
-    # Verificando se o número de colunas é o esperado
-    if len(data.columns) != 20:
-        print(f"Erro: O número de colunas é {len(data.columns)}, mas o esperado são 20.")
-        return
+    data = data.fillna(0)  # Substituir NaN por 0
 
-    # Inserindo os dados no banco de dados
+    # Inserindo os dados
     for _, row in data.iterrows():
-        values = tuple(row)  # Converte a linha para uma tupla
-        print(f"Inserindo valores: {values}")  # Exibe os valores que serão inseridos
+        values = tuple(row)
         try:
             cursor.execute(sql, values)
-            connection.commit()  # Confirma a inserção no banco
+            connection.commit()
         except Error as e:
             print(f"Erro ao inserir dados: {e}")
-            connection.rollback()  # Desfaz a inserção em caso de erro
-            continue
+            connection.rollback()
     print("Dados inseridos com sucesso")
 
 def main():
-    # Caminho do arquivo CSV
-    arquivo_csv = 's3://relatorios3-blocktime/cur-reports/CUR/CUR/year=2024/TotalMes/costs.csv'
+    # Parâmetros do S3
+    bucket_name = 'relatorios3-blocktime'
+    s3_caminho = 'cur-reports/CUR/CUR/year=2024/TotalMes/costs.csv'
 
-    # Lendo o CSV com pandas
-    try:
-        data = pd.read_csv(arquivo_csv)
-        print("Estrutura do DataFrame:")
-        print(data.head())  # Exibe as primeiras linhas para verificação
-    except Exception as e:
-        print(f"Erro ao ler o arquivo CSV: {e}")
+    # Carregando o CSV do S3
+    data = carregar_csv_do_s3(bucket_name, s3_caminho)
+    if data is None:
+        print("Não foi possível carregar os dados do S3")
         return
 
-    # Verificando o número de colunas
-    if len(data.columns) != 20:
-        print(f"Erro: O arquivo CSV tem {len(data.columns)} colunas, mas o esperado são 20 colunas.")
-        return
-
-    # Ajustando os nomes das colunas para correspondência
+    # Ajustando os nomes das colunas
     data.columns = [
-        'Servico', 'Relational_Database_Service', 'EC2_Instancias', 'Tax', 'EC2_Outros', 'VPC', 'Route_53', 'CloudWatch',
-        'CloudTrail', 'S3', 'Budgets', 'EC2_Container_Registry_ECR', 'Elastic_File_System', 'Backup', 'Amplify', 'Lambda',
-        'SNS', 'Glue', 'Key_Management_Service', 'Custos_totais'
+        'servico', 'custo_banco_relacional', 'custo_instancias_ec2', 'custo_impostos', 'custo_ec2_outros',
+        'custo_vpc', 'custo_route53', 'custo_cloudwatch', 'custo_cloudtrail', 'custo_s3', 'custo_orcamentos',
+        'custo_ecr', 'custo_efs', 'custo_backup', 'custo_amplify', 'custo_lambda', 'custo_sns', 'custo_glue',
+        'custo_kms', 'custo_total'
     ]
 
-    # Conectando ao banco de dados
+    # Conectando ao banco e inserindo os dados
     connection = conectar_banco()
     if connection:
-        # Inserindo os dados
         inserir_dados(connection, data)
-        connection.close()  # Fecha a conexão com o banco de dados
+        connection.close()
 
 if __name__ == "__main__":
     main()
@@ -724,7 +723,7 @@ ALTER TABLE cur ADD INDEX idx_glue (Glue);
 ALTER TABLE cur ADD INDEX idx_custos_totais (Custos_totais);
  ```
 
-2.1 **Trail**
+1.2 **Trail**
  ```bash
  CREATE TABLE IF NOT EXISTS cloudtrail_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -747,6 +746,33 @@ ALTER TABLE cur ADD INDEX idx_custos_totais (Custos_totais);
 
 );
  ```
+1.3 **CurTotal**
+ ```bash
+CREATE TABLE custos_servicos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    servico VARCHAR(255) NOT NULL,
+    custo_banco_relacional DECIMAL(10, 2),
+    custo_instancias_ec2 DECIMAL(10, 2),
+    custo_impostos DECIMAL(10, 2),
+    custo_ec2_outros DECIMAL(10, 2),
+    custo_vpc DECIMAL(10, 2),
+    custo_route53 DECIMAL(10, 2),
+    custo_cloudwatch DECIMAL(10, 2),
+    custo_cloudtrail DECIMAL(10, 2),
+    custo_s3 DECIMAL(10, 2),
+    custo_orcamentos DECIMAL(10, 2),
+    custo_ecr DECIMAL(10, 2),
+    custo_efs DECIMAL(10, 2),
+    custo_backup DECIMAL(10, 2),
+    custo_amplify DECIMAL(10, 2),
+    custo_lambda DECIMAL(10, 2),
+    custo_sns DECIMAL(10, 2),
+    custo_glue DECIMAL(10, 2),
+    custo_kms DECIMAL(10, 2),
+    custo_total DECIMAL(10, 2)
+);
+ ```
+
 
 ### 8. Configuração do Gráficos do Grafana:
 
