@@ -662,70 +662,14 @@ CREATE TABLE IF NOT EXISTS cur (
     line_item_product_code VARCHAR(255),
     line_item_usage_type VARCHAR(255),
     line_item_usage_amount DOUBLE,
-    line_item_normalization_factor DOUBLE,
-    line_item_normalized_usage_amount DOUBLE,
     line_item_currency_code VARCHAR(255),
-    pricing_currency VARCHAR(255) NOT NULL,  -- Nova coluna
-    pricing_public_on_demand_cost DOUBLE NOT NULL,  -- Nova coluna
+    pricing_currency VARCHAR(255) NOT NULL,
+    pricing_public_on_demand_cost DOUBLE NOT NULL,
     line_item_unblended_rate VARCHAR(255),
     line_item_unblended_cost DOUBLE,
-    line_item_blended_rate VARCHAR(255),
     line_item_blended_cost DOUBLE,
-    line_item_line_item_description TEXT,  -- Mudado para TEXT
-    line_item_legal_entity VARCHAR(255),
-    product_product_name TEXT,  -- Mudado para TEXT
-    product_group TEXT,  -- Mudado para TEXT
-    product_group_description TEXT,  -- Mudado para TEXT
-    product_location TEXT,  -- Mudado para TEXT
-    product_location_type TEXT  -- Mudado para TEXT
+    product_product_name TEXT
 );
-
-ALTER TABLE cur
-ADD COLUMN Servico VARCHAR(255),
-ADD COLUMN Transfer_Family VARCHAR(255),
-ADD COLUMN Tax DOUBLE,
-ADD COLUMN EC2_Outros DOUBLE,
-ADD COLUMN Route_53 DOUBLE,
-ADD COLUMN Registrar DOUBLE,
-ADD COLUMN EC2_Instancias DOUBLE,
-ADD COLUMN VPC DOUBLE,
-ADD COLUMN Relational_Database_Service DOUBLE,
-ADD COLUMN S3 DOUBLE,
-ADD COLUMN Budgets DOUBLE,
-ADD COLUMN EC2_Container_Registry_ECR DOUBLE,
-ADD COLUMN Elastic_File_System DOUBLE,
-ADD COLUMN Backup DOUBLE,
-ADD COLUMN Amplify DOUBLE,
-ADD COLUMN Lambda DOUBLE,
-ADD COLUMN CloudShell DOUBLE,
-ADD COLUMN CloudWatch DOUBLE,
-ADD COLUMN Key_Management_Service DOUBLE,
-ADD COLUMN SNS DOUBLE,
-ADD COLUMN Glue DOUBLE,
-ADD COLUMN Custos_totais DOUBLE;
-
-ALTER TABLE cur ADD INDEX idx_servico (Servico);
-ALTER TABLE cur ADD INDEX idx_transfer_family (Transfer_Family);
-ALTER TABLE cur ADD INDEX idx_tax (Tax);
-ALTER TABLE cur ADD INDEX idx_ec2_outros (EC2_Outros);
-ALTER TABLE cur ADD INDEX idx_route_53 (Route_53);
-ALTER TABLE cur ADD INDEX idx_registrar (Registrar);
-ALTER TABLE cur ADD INDEX idx_ec2_instancias (EC2_Instancias);
-ALTER TABLE cur ADD INDEX idx_vpc (VPC);
-ALTER TABLE cur ADD INDEX idx_relational_database_service (Relational_Database_Service);
-ALTER TABLE cur ADD INDEX idx_s3 (S3);
-ALTER TABLE cur ADD INDEX idx_budgets (Budgets);
-ALTER TABLE cur ADD INDEX idx_ec2_container_registry_ecr (EC2_Container_Registry_ECR);
-ALTER TABLE cur ADD INDEX idx_elastic_file_system (Elastic_File_System);
-ALTER TABLE cur ADD INDEX idx_backup (Backup);
-ALTER TABLE cur ADD INDEX idx_amplify (Amplify);
-ALTER TABLE cur ADD INDEX idx_lambda (Lambda);
-ALTER TABLE cur ADD INDEX idx_cloudshell (CloudShell);
-ALTER TABLE cur ADD INDEX idx_cloudwatch (CloudWatch);
-ALTER TABLE cur ADD INDEX idx_key_management_service (Key_Management_Service);
-ALTER TABLE cur ADD INDEX idx_sns (SNS);
-ALTER TABLE cur ADD INDEX idx_glue (Glue);
-ALTER TABLE cur ADD INDEX idx_custos_totais (Custos_totais);
  ```
 
 1.2 **Trail**
